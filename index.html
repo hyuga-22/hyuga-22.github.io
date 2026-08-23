@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --ink: #1b222c;
+    --muted: #5b6472;
+    --accent: #2e7d5b;
+    --accent-soft: #e6f0ea;
+    --warn: #c1666b;
+    --border: #e3e6ea;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Noto Sans JP', sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section { padding: 88px 0; }
+  section + section { border-top: 1px solid var(--border); }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0 0 12px 0;
+  }
+
+  h1, h2, h3 { margin: 0; font-weight: 700; }
+  h2 { font-size: 26px; margin-bottom: 32px; }
+
+  p { color: var(--muted); margin: 0 0 16px 0; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding-top: 120px;
+    padding-bottom: 88px;
+  }
+  .hero .eyebrow::before { content: "$ "; color: var(--muted); }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+  .hero .fill-me {
+    background: var(--accent-soft);
+    border-radius: 4px;
+    padding: 2px 8px;
+  }
+  .hero-subtitle {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    margin: -12px 0 20px 0;
+  }
+  .hero .tagline {
+    font-size: 17px;
+    max-width: 44em;
+  }
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 14px;
+    background: var(--surface);
+  }
+
+  /* ---------- About ---------- */
+  .about p { font-size: 16px; max-width: 42em; }
+
+  /* ---------- Skills ---------- */
+  .skill-group { margin-bottom: 28px; }
+  .skill-group:last-child { margin-bottom: 0; }
+  .skill-group h3 {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill {
+    font-size: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 14px;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .pill:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+  /* ---------- Works (commit timeline) ---------- */
+  .journey {
+    font-size: 14px;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+  }
+  .journey strong { color: var(--ink); }
+  .journey-flow {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    margin-top: 10px;
+    line-height: 1.9;
+  }
+  .journey-current {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink);
+    font-weight: 700;
+    background: var(--accent-soft);
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin-top: 10px;
+  }
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--border);
+  }
+  .work {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 28px 24px;
+    margin-bottom: 28px;
+  }
+  .work:last-child { margin-bottom: 0; }
+  .work::before {
+    content: "";
+    position: absolute;
+    left: -32px;
+    top: 32px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid var(--bg);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  .work-role {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .work h3 { font-size: 19px; margin-bottom: 10px; }
+  .work-subtitle {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    margin: -6px 0 14px 0;
+  }
+  .work .problem { font-size: 14px; margin-bottom: 16px; }
+  .work .field-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  .work ul {
+    margin: 0 0 16px 0;
+    padding-left: 20px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .work ul:last-of-type { margin-bottom: 16px; }
+  .work-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .work-tech span {
+    font-family: var(--mono);
+    font-size: 11px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+  .work-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px;
+  }
+  .work-link::after { content: "→"; transition: transform 0.15s ease; }
+  .work-link:hover::after { transform: translateX(3px); }
+
+  /* ---------- Contact ---------- */
+  .contact-list { list-style: none; margin: 0; padding: 0; }
+  .contact-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-list li:last-child { border-bottom: none; }
+  .contact-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    width: 90px;
+    flex-shrink: 0;
+  }
+  .contact-list a { font-size: 15px; text-decoration: none; border-bottom: 1px solid var(--border); }
+  .contact-list a:hover { border-color: var(--accent); }
+
+  footer {
+    text-align: center;
+    padding: 40px 0 60px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 56px 0; }
+    .hero { padding-top: 72px; }
+    .work { padding: 22px 18px 18px; }
+    .timeline { padding-left: 24px; }
+    .work::before { left: -24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">whoami</p>
+      <h1>會田彪冴のポートフォリオ</h1>
+      <p class="hero-subtitle">Web Developer Portfolio</p>
+      <p class="tagline">状況を整理し、より良い形に改善し続けることを大切にしています。授業外で顔文字辞書アプリの開発に取り組みながら、使いやすさや機能を継続的に見直すことを意識してきました。</p>
+      <div class="tag-row">
+        <span class="tag">専門学校 3年</span>
+        <span class="tag">WEBアプリケーション開発</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <p class="eyebrow">about</p>
+      <h2>自己紹介</h2>
+      <p>状況を整理し、より良い形に改善していくことを得意としています。趣味の動画制作では視聴者のコメントやアナリティクスをもとに編集方法を見直し続けており、開発でも同じように「一度作って終わり」ではなく、使いやすさや機能を継続的に改善することを意識しています。</p>
+      <p><strong>得意分野：</strong>既存の仕組みを見直し、より使いやすい形へ改善すること。</p>
+      <p>専門学校ではWEBアプリケーション開発に特に興味を持ち、実際の開発手法やフレームワークを学ぶ中で、演習を通して成果が形として見える点に魅力を感じてきました。授業で学んだ内容を活かし、授業外でも顔文字辞書アプリの開発に取り組んでいます。</p>
+      <p>直近の目標は、開発中の顔文字辞書アプリ「Flaskozi ω・´」を、胸を張って公開できる完成度まで仕上げることです。長期的には、自分が得意なこと・軸となるものを見つけ、それを中心に据えて働ける仕事に就きたいと考えています。今回のポートフォリオ制作も、自分の軸を探る一歩だと捉えています。</p>
+    </div>
+  </section>
+
+  <section class="skills" id="skills">
+    <div class="wrap">
+      <p class="eyebrow">skills</p>
+      <h2>スキル紹介</h2>
+      <p style="margin-bottom: 28px;">以下は、これまで制作した4つの作品を通して実際に使用した技術です。各技術の詳しい使い方は「制作物」セクションで紹介しています。</p>
+
+
+      <div class="skill-group">
+        <h3>言語 / フレームワーク</h3>
+        <div class="pill-row">
+          <span class="pill">Python</span>
+          <span class="pill">Flask</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">Node.js / Express</span>
+          <span class="pill">EJS</span>
+          <span class="pill">HTML / CSS</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>データベース</h3>
+        <div class="pill-row">
+          <span class="pill">MySQL</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>その他</h3>
+        <div class="pill-row">
+          <span class="pill">外部API連携（Open-Meteo）</span>
+          <span class="pill">Git / GitHub</span>
+          <span class="pill">環境変数によるセキュリティ管理</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="works" id="works">
+    <div class="wrap">
+      <p class="eyebrow">works</p>
+      <h2>制作物</h2>
+
+      <div class="journey">
+        <strong>Development Journey</strong> — 授業での制作をきっかけに、作って終わりにせず、実際に使って感じた課題を改善しながら制作を続けてきました。Webアプリ開発だけでなく、データベース設計やAPI連携にも取り組み、技術の幅を広げるために、TODO管理CLIの見直しと天気検索アプリの開発に取り組みました。
+        <div class="journey-flow">
+          TODO管理CLI（1年次）<br>
+          → 顔文字辞書 CLI版<br>
+          → 顔文字辞書 CLI版の修正（データ保存のJSON化、検索方式の見直しなど）<br>
+          → Flaskozi Web版<br>
+          → TODO管理CLIの見直し・改良<br>
+          → 天気検索アプリ
+        </div>
+        <div class="journey-current">↳ 現在もFlaskoziを継続開発中</div>
+      </div>
+
+      <div class="timeline">
+
+        <div class="work">
+          <p class="work-role">FRONTEND / WEB · FEATURED</p>
+          <h3>Flaskozi ω・´ - 顔文字辞書（Web版）</h3>
+          <p class="work-subtitle">Flask × kaomozi（顔文字）+ ω・´ ／ 現在最も力を入れて開発している代表作品</p>
+          <p class="problem">PCで顔文字を入力する際、スマートフォンの「Simeji」のような辞書アプリが存在しない不便さを解消するために開発。CLI版をFlaskで作り直し、認証・セキュリティ対応を含めて一般公開できる形に発展させました。</p>
+          <p class="field-label">主な機能</p>
+          <ul>
+            <li>顔文字の検索・コピー・ローカルお気に入り管理（ログイン不要）</li>
+            <li>管理者による顔文字の登録・編集・削除、データのバックアップ／復元</li>
+            <li>Zip Slip対策、認可チェック、ブルートフォース対策などのセキュリティ対応</li>
+          </ul>
+          <p class="field-label">工夫した点</p>
+          <p>「動けばよい」実装から一歩進め、Zip Slip対策・認可チェックの一貫性・原子的なファイル書き込みなど、実運用を意識したセキュリティ課題を洗い出して対応しました。インターンシップの個別フィードバック面談でZoomの画面共有を通じて見ていただいた際には、機能面は作り込まれており、デザインさえ整えれば通常のWebサイトとして通用する完成度だとの評価をいただきました。</p>
+          <p class="field-label">今後の課題</p>
+          <p>CSRFトークンによる本格的な対策やSQLiteへの移行、デザイン・UI/UXの調整が未着手のため、今後の改善点として残しています。インターンシップの個別フィードバック面談において「挨拶・笑い・反応のようなジャンルで顔文字を検索できると良い」というご意見をいただいたため、ジャンル検索機能の実装を予定しています。また、入力中のテキストを検知して顔文字候補をポップアップ表示するChrome拡張機能を実装し、PC版simejiに近い体験を将来的に目指したいと考えています。</p>
+          <div class="work-tech">
+            <span>Python</span><span>Flask</span><span>Flask-Limiter</span><span>Werkzeug</span>
+          </div>
+          <a class="work-link" href="https://github.com/hyuga-22/kaomozi_web" target="_blank" rel="noopener">GitHubで見る</a>
+        </div>
+
+        <div class="work">
+          <p class="work-role">CLI / LOCAL TOOL</p>
+          <h3>顔文字辞書（CLI版）</h3>
+          <p class="problem">Web版のもとになった、自分専用のローカルツール。専門学校1年次のPython課題をきっかけに開発し、ターミナル上で顔文字の検索・登録・編集・削除を行えます。</p>
+          <p class="field-label">主な機能</p>
+          <ul>
+            <li>顔文字の検索（完全一致・部分一致）、クリップボードへのコピー</li>
+            <li>顔文字・お気に入りの登録／編集／削除</li>
+          </ul>
+          <p class="field-label">工夫した点</p>
+          <p>顔文字を編集・削除した際、お気に入り側のデータも自動的に連動して更新されるようにし、自分専用ツールとしての使い勝手を優先しました。</p>
+          <p class="field-label">今後の課題</p>
+          <p>簡易チャットボット機能を試作中ですが、現時点では固定応答を返すだけの未実装機能です。エラーハンドリングや自動テストの整備も今後の課題です。</p>
+          <div class="work-tech">
+            <span>Python</span><span>pyperclip</span><span>JSON</span>
+          </div>
+          <a class="work-link" href="https://github.com/hyuga-22/kaomozi_cli" target="_blank" rel="noopener">GitHubで見る</a>
+        </div>
+
+        <div class="work">
+          <p class="work-role">BACKEND / DATABASE</p>
+          <h3>TODO管理CLI</h3>
+          <p class="problem">専門学校1年次の「データベース設計」の授業課題を、ポートフォリオ用に見直したもの。ユーザーごとにTODOを優先度・期限つきで管理できるCUIアプリです。</p>
+          <p class="field-label">主な機能</p>
+          <ul>
+            <li>ユーザー管理（登録・表示・更新・削除）、TODO管理（登録・表示・更新・削除・出力）</li>
+            <li>優先度順／期限順での並び替え、上位5件表示／全件表示の切り替え</li>
+          </ul>
+          <p class="field-label">工夫した点</p>
+          <p>SQLをすべてパラメータ化してSQLインジェクションを防ぎ、更新・削除処理ではcommit／rollbackによるトランザクション管理を行っています。ポートフォリオ用の見直しでは、メニューが操作のたびに終了してしまう不便さを解消するためwhileループ化し、TODO表示も上位5件と全件表示を選べるように拡張しました。</p>
+          <p class="field-label">今後の課題</p>
+          <p>エラーハンドリングの強化や利便性の向上、データベース設計の最適化、機能の追加・修正が挙げられます。将来的には、Flaskozi ω・´と同じようにWEB化し、共有しやすい形にすることも考えています。</p>
+          <div class="work-tech">
+            <span>Python</span><span>MySQL</span><span>python-dotenv</span>
+          </div>
+          <a class="work-link" href="https://github.com/hyuga-22/todo_cli" target="_blank" rel="noopener">GitHubで見る</a>
+        </div>
+
+        <div class="work">
+          <p class="work-role">API連携</p>
+          <h3>天気検索アプリ</h3>
+          <p class="problem">気象庁のサイトやテレビをわざわざ確認するのが面倒な時に、地域名を入力するだけで手軽に天気予報や気温を確認できるツールとして開発しました。</p>
+          <p class="field-label">主な機能</p>
+          <ul>
+            <li>地域名から緯度経度への自動変換（表記ゆれにも対応）</li>
+            <li>過去の天気の期間検索、今日から先の天気予報（1〜16日）の表示</li>
+          </ul>
+          <p class="field-label">工夫した点</p>
+          <p>当初はPythonで取得したデータをDBに保存し一覧表示するだけの構成でしたが、「WEB上で完結させたい」「検索するたびに履歴が溜まるのは良くない」という気づきから、DBを持たないその場検索の構成に作り直しました。「越谷市」「越谷」のような地域名の表記ゆれにも、複数パターンを自動で試すことで対応しています。</p>
+          <p class="field-label">今後の課題</p>
+          <p>複数地点を同時に比較表示する機能や、気温の推移をグラフで可視化する機能は、今後の改善案として残しています。</p>
+          <div class="work-tech">
+            <span>Node.js</span><span>Express</span><span>EJS</span><span>Open-Meteo API</span>
+          </div>
+          <a class="work-link" href="https://github.com/hyuga-22/weather_web" target="_blank" rel="noopener">GitHubで見る</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">contact</p>
+      <h2>連絡先</h2>
+      <ul class="contact-list">
+        <li>
+          <span class="contact-label">Mail</span>
+          <a href="mailto:siw24010001@class.siw.ac.jp">siw24010001@class.siw.ac.jp</a>
+        </li>
+        <li>
+          <span class="contact-label">GitHub</span>
+          <a href="https://github.com/hyuga-22" target="_blank" rel="noopener">github.com/hyuga-22</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>portfolio — 2026</footer>
+
+</body>
+</html>
