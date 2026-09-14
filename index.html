@@ -238,8 +238,15 @@
     font-size: 13px;
     font-weight: 700;
     text-decoration: none;
-    border-bottom: 1px solid var(--accent);
-    padding-bottom: 2px;
+    color: #fff;
+    background: var(--accent);
+    padding: 9px 18px;
+    border-radius: 6px;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+  }
+  .work-link:hover {
+    background: #245f46;
+    transform: translateY(-1px);
   }
   .work-link::after { content: "→"; transition: transform 0.15s ease; }
   .work-link:hover::after { transform: translateX(3px); }
@@ -359,11 +366,11 @@
           TODO管理CLI（1年次）<br>
           → 顔文字辞書 CLI版<br>
           → 顔文字辞書 CLI版の修正（データ保存のJSON化、検索方式の見直しなど）<br>
-          → Flaskozi ω・´ Web版<br>
+          → Flaskozi Web版<br>
           → TODO管理CLIの見直し・改良<br>
           → 天気検索アプリ
         </div>
-        <div class="journey-current">↳ 現在もFlaskozi ω・´を継続開発中</div>
+        <div class="journey-current">↳ 現在もFlaskoziを継続開発中</div>
       </div>
 
       <div class="timeline">
@@ -386,7 +393,7 @@
           <div class="work-tech">
             <span>Python</span><span>Flask</span><span>Flask-Limiter</span><span>Werkzeug</span>
           </div>
-          <a class="work-link" href="https://github.com/hyuga-22/kaomozi_web" target="_blank" rel="noopener">GitHubで見る</a>
+          <a class="work-link" href="https://github.com/hyuga-22/kaomozi_web" target="_blank" rel="noopener">README・コードを見る</a>
         </div>
 
         <div class="work">
@@ -405,7 +412,7 @@
           <div class="work-tech">
             <span>Python</span><span>pyperclip</span><span>JSON</span>
           </div>
-          <a class="work-link" href="https://github.com/hyuga-22/kaomozi_cli" target="_blank" rel="noopener">GitHubで見る</a>
+          <a class="work-link" href="https://github.com/hyuga-22/kaomozi_cli" target="_blank" rel="noopener">README・コードを見る</a>
         </div>
 
         <div class="work">
@@ -424,7 +431,7 @@
           <div class="work-tech">
             <span>Python</span><span>MySQL</span><span>python-dotenv</span>
           </div>
-          <a class="work-link" href="https://github.com/hyuga-22/todo_cli" target="_blank" rel="noopener">GitHubで見る</a>
+          <a class="work-link" href="https://github.com/hyuga-22/todo_cli" target="_blank" rel="noopener">README・コードを見る</a>
         </div>
 
         <div class="work">
@@ -443,7 +450,7 @@
           <div class="work-tech">
             <span>Node.js</span><span>Express</span><span>EJS</span><span>Open-Meteo API</span>
           </div>
-          <a class="work-link" href="https://github.com/hyuga-22/weather_web" target="_blank" rel="noopener">GitHubで見る</a>
+          <a class="work-link" href="https://github.com/hyuga-22/weather_web" target="_blank" rel="noopener">README・コードを見る</a>
         </div>
 
       </div>
