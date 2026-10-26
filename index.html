@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5MQ5GBGQJ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-5MQ5GBGQJ5');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>會田彪冴｜Webアプリ開発ポートフォリオ</title>
+
+  <meta name="description"
+        content="PythonやFlaskを用いたWebアプリ開発の制作物を掲載しています。代表作Flaskozi ω・´を中心に開発・改善の取り組みを紹介しています。">
+
+  <link rel="canonical"
+        href="https://hyuga-22.github.io/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #f7f8fa;
@@ -84,6 +102,12 @@
     color: var(--muted);
     margin: -12px 0 20px 0;
   }
+  .hero-highlight {
+    font-family: var(--mono);
+    font-size: 13px;
+    margin-top: 20px;
+  }
+  .hero-highlight a { font-weight: 700; }
   .hero .tagline {
     font-size: 17px;
     max-width: 44em;
@@ -299,12 +323,10 @@
       <p class="eyebrow">whoami</p>
       <h1>會田彪冴のポートフォリオ</h1>
       <p class="hero-subtitle">Web Developer Portfolio</p>
-      <p class="tagline">状況を整理し、より良い形に改善し続けることを大切にしています。授業外で顔文字辞書アプリの開発に取り組みながら、使いやすさや機能を継続的に見直すことを意識してきました。</p>
+      <p class="tagline">状況を整理し、より良い形に改善し続けることを大切にしています。授業外でFlask製の顔文字辞書アプリ「Flaskozi ω・´」の開発に取り組みながら、使いやすさや機能を継続的に見直すことを意識してきました。</p>
       <div class="tag-row">
         <span class="tag">専門学校 3年</span>
         <span class="tag">WEBアプリケーション開発</span>
-      </div>
-    </div>
   </section>
 
   <section class="about" id="about">
@@ -379,17 +401,17 @@
           <p class="work-role">FRONTEND / WEB · FEATURED</p>
           <h3>Flaskozi ω・´ - 顔文字辞書（Web版）</h3>
           <p class="work-subtitle">Flask × kaomozi（顔文字）+ ω・´ ／ 現在最も力を入れて開発している代表作品</p>
-          <p class="problem">PCで顔文字を入力する際、スマートフォンの「Simeji」のような辞書アプリが存在しない不便さを解消するために開発。CLI版をFlaskで作り直し、認証・セキュリティ対応を含めて一般公開できる形に発展させました。</p>
+          <p class="problem">PCで顔文字を入力する際、スマートフォンの「Simeji」のような辞書アプリが存在しない不便さを解消するために開発。CLI版をFlaskで作り直し、認証・セキュリティ対応を含めて公開を前提とした設計に作り直しました（現時点ではGitHub上でのコード公開のみで、ライブデモは未公開です）。</p>
           <p class="field-label">主な機能</p>
           <ul>
             <li>顔文字の検索・コピー・ローカルお気に入り管理（ログイン不要）</li>
             <li>管理者による顔文字の登録・編集・削除、データのバックアップ／復元</li>
-            <li>Zip Slip対策、認可チェック、ブルートフォース対策などのセキュリティ対応</li>
+            <li>Zip Slip対策、認可チェック、ブルートフォース対策などのセキュリティ対応（自動テストによる網羅的な検証は未実施）</li>
           </ul>
           <p class="field-label">工夫した点</p>
           <p>「動けばよい」実装から一歩進め、Zip Slip対策・認可チェックの一貫性・原子的なファイル書き込みなど、実運用を意識したセキュリティ課題を洗い出して対応しました。インターンシップの個別フィードバック面談でZoomの画面共有を通じて見ていただいた際には、機能面は作り込まれており、デザインさえ整えれば通常のWebサイトとして通用する完成度だとの評価をいただきました。</p>
           <p class="field-label">今後の課題</p>
-          <p>CSRFトークンによる本格的な対策やSQLiteへの移行、デザイン・UI/UXの調整が未着手のため、今後の改善点として残しています。インターンシップの個別フィードバック面談において「挨拶・笑い・反応のようなジャンルで顔文字を検索できると良い」というご意見をいただいたため、ジャンル検索機能の実装を予定しています。また、入力中のテキストを検知して顔文字候補をポップアップ表示するChrome拡張機能を実装し、PC版simejiに近い体験を将来的に目指したいと考えています。</p>
+          <p>CSRFトークンによる本格的な対策やSQLiteへの移行、デザイン・UI/UXの調整が未着手のため、今後の改善点として残しています。まだ学習段階の個人開発アプリであることを踏まえ、優先度をつけながら順次対応していく予定です。インターンシップの個別フィードバック面談において「挨拶・笑い・反応のようなジャンルで顔文字を検索できると良い」というご意見をいただいたため、ジャンル検索機能の実装を予定しています。また、入力中のテキストを検知して顔文字候補をポップアップ表示するChrome拡張機能を実装し、PC版simejiに近い体験を将来的に目指したいと考えています。</p>
           <div class="work-tech">
             <span>Python</span><span>Flask</span><span>Flask-Limiter</span><span>Werkzeug</span>
           </div>
@@ -406,7 +428,7 @@
             <li>顔文字・お気に入りの登録／編集／削除</li>
           </ul>
           <p class="field-label">工夫した点</p>
-          <p>顔文字を編集・削除した際、お気に入り側のデータも自動的に連動して更新されるようにし、自分専用ツールとしての使い勝手を優先しました。</p>
+          <p>顔文字を編集・削除した際、お気に入り側のデータも自動的に連動して更新されるようにし、自分専用ツールとしての使い勝手を優先しました。データ保存をJSON化し、検索も完全一致・部分一致を切り替えられる方式にするなど、個人用ツールとして日常的に運用しやすい設計を意識しました。</p>
           <p class="field-label">今後の課題</p>
           <p>簡易チャットボット機能を試作中ですが、現時点では固定応答を返すだけの未実装機能です。エラーハンドリングや自動テストの整備も今後の課題です。</p>
           <div class="work-tech">
@@ -474,7 +496,7 @@
     </div>
   </section>
 
-  <footer>portfolio — 最終更新: 2026年9月</footer>
+  <footer>portfolio — 最終更新: 2026年8月</footer>
 
 </body>
 </html>
