@@ -254,6 +254,35 @@
     padding: 4px 10px;
     border-radius: 4px;
   }
+  .work-shots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 14px;
+    margin: 0 0 20px 0;
+  }
+  .work-shots figure { margin: 0; display: flex; flex-direction: column; }
+  .work-shots a {
+    display: block;
+    flex: 1;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .work-shots img {
+    display: block;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    object-position: left top;
+  }
+  .work-shots figcaption {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-top: 6px;
+  }
+  .work-links { display: flex; flex-wrap: wrap; gap: 10px; }
   .work-link {
     display: inline-flex;
     align-items: center;
@@ -274,6 +303,15 @@
   }
   .work-link::after { content: "→"; transition: transform 0.15s ease; }
   .work-link:hover::after { transform: translateX(3px); }
+  .work-link-secondary {
+    color: var(--accent);
+    background: var(--surface);
+    border: 1px solid var(--accent);
+  }
+  .work-link-secondary:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
 
   /* ---------- Contact ---------- */
   .contact-list { list-style: none; margin: 0; padding: 0; }
@@ -327,6 +365,9 @@
       <div class="tag-row">
         <span class="tag">専門学校 3年</span>
         <span class="tag">WEBアプリケーション開発</span>
+      </div>
+      <p class="hero-highlight"><a href="https://kaomozi-web.onrender.com/" target="_blank" rel="noopener">→ 代表作品「Flaskozi ω・´」のライブデモを見る</a></p>
+    </div>
   </section>
 
   <section class="about" id="about">
@@ -388,11 +429,11 @@
           TODO管理CLI（1年次）<br>
           → 顔文字辞書 CLI版<br>
           → 顔文字辞書 CLI版の修正（データ保存のJSON化、検索方式の見直しなど）<br>
-          → Flaskozi Web版<br>
+          → Flaskozi ω・´ Web版<br>
           → TODO管理CLIの見直し・改良<br>
           → 天気検索アプリ
         </div>
-        <div class="journey-current">↳ 現在もFlaskoziを継続開発中</div>
+        <div class="journey-current">↳ 現在もFlaskozi ω・´を継続開発中</div>
       </div>
 
       <div class="timeline">
@@ -401,7 +442,25 @@
           <p class="work-role">FRONTEND / WEB · FEATURED</p>
           <h3>Flaskozi ω・´ - 顔文字辞書（Web版）</h3>
           <p class="work-subtitle">Flask × kaomozi（顔文字）+ ω・´ ／ 現在最も力を入れて開発している代表作品</p>
-          <p class="problem">PCで顔文字を入力する際、スマートフォンの「Simeji」のような辞書アプリが存在しない不便さを解消するために開発。CLI版をFlaskで作り直し、認証・セキュリティ対応を含めて公開を前提とした設計に作り直しました（現時点ではGitHub上でのコード公開のみで、ライブデモは未公開です）。</p>
+          <p class="problem">PCで顔文字を入力する際、スマートフォンの「Simeji」のような辞書アプリが存在しない不便さを解消するために開発。CLI版をFlaskで作り直し、認証・セキュリティ対応を含めて一般公開できる形に仕上げ、ライブデモを公開しています（管理者機能は公開デモでは利用できません）。</p>
+          <div class="work-shots">
+            <figure>
+              <a href="images/flaskozi-list.webp" target="_blank" rel="noopener"><img src="images/flaskozi-list.webp" width="884" height="802" loading="lazy" alt="Flaskoziの顔文字一覧・検索画面。検索欄に入力すると結果が別枠でライブ表示される"></a>
+              <figcaption>一覧・ライブ検索<br>（デモで利用可）</figcaption>
+            </figure>
+            <figure>
+              <a href="images/flaskozi-mobile.webp" target="_blank" rel="noopener"><img src="images/flaskozi-mobile.webp" width="480" height="856" loading="lazy" alt="スマートフォンで表示したFlaskoziのメインメニュー"></a>
+              <figcaption>スマホ表示<br>（デモで利用可）</figcaption>
+            </figure>
+            <figure>
+              <a href="images/flaskozi-admin-menu.webp" target="_blank" rel="noopener"><img src="images/flaskozi-admin-menu.webp" width="855" height="588" loading="lazy" alt="Flaskoziの管理者メニュー。登録・編集・削除・リクエスト確認・バックアップ・復元・ログアウト"></a>
+              <figcaption>管理者メニュー<br>（デモでは利用不可）</figcaption>
+            </figure>
+            <figure>
+              <a href="images/flaskozi-admin-restore.webp" target="_blank" rel="noopener"><img src="images/flaskozi-admin-restore.webp" width="862" height="600" loading="lazy" alt="Flaskoziのデータ復元画面。ZIP選択、復元項目の選択、パスコード入力"></a>
+              <figcaption>バックアップ復元<br>（デモでは利用不可）</figcaption>
+            </figure>
+          </div>
           <p class="field-label">主な機能</p>
           <ul>
             <li>顔文字の検索・コピー・ローカルお気に入り管理（ログイン不要）</li>
@@ -411,11 +470,14 @@
           <p class="field-label">工夫した点</p>
           <p>「動けばよい」実装から一歩進め、Zip Slip対策・認可チェックの一貫性・原子的なファイル書き込みなど、実運用を意識したセキュリティ課題を洗い出して対応しました。インターンシップの個別フィードバック面談でZoomの画面共有を通じて見ていただいた際には、機能面は作り込まれており、デザインさえ整えれば通常のWebサイトとして通用する完成度だとの評価をいただきました。</p>
           <p class="field-label">今後の課題</p>
-          <p>CSRFトークンによる本格的な対策やSQLiteへの移行、デザイン・UI/UXの調整が未着手のため、今後の改善点として残しています。まだ学習段階の個人開発アプリであることを踏まえ、優先度をつけながら順次対応していく予定です。インターンシップの個別フィードバック面談において「挨拶・笑い・反応のようなジャンルで顔文字を検索できると良い」というご意見をいただいたため、ジャンル検索機能の実装を予定しています。また、入力中のテキストを検知して顔文字候補をポップアップ表示するChrome拡張機能を実装し、PC版simejiに近い体験を将来的に目指したいと考えています。</p>
+          <p>CSRFトークンによる本格的な対策やSQLiteへの移行、デザイン・UI/UXの細部調整が未着手のため、今後の改善点として残しています。まだ学習段階の個人開発アプリであることを踏まえ、優先度をつけながら順次対応していく予定です。インターンシップの個別フィードバック面談において「挨拶・笑い・反応のようなジャンルで顔文字を検索できると良い」というご意見をいただいたため、ジャンル検索機能の実装を予定しています。また、入力中のテキストを検知して顔文字候補をポップアップ表示するChrome拡張機能を実装し、PC版simejiに近い体験を将来的に目指したいと考えています。</p>
           <div class="work-tech">
             <span>Python</span><span>Flask</span><span>Flask-Limiter</span><span>Werkzeug</span>
           </div>
-          <a class="work-link" href="https://github.com/hyuga-22/kaomozi_web" target="_blank" rel="noopener">README・コードを見る</a>
+          <div class="work-links">
+            <a class="work-link" href="https://kaomozi-web.onrender.com/" target="_blank" rel="noopener">ライブデモを見る</a>
+            <a class="work-link work-link-secondary" href="https://github.com/hyuga-22/kaomozi_web" target="_blank" rel="noopener">README・コードを見る</a>
+          </div>
         </div>
 
         <div class="work">
@@ -434,7 +496,9 @@
           <div class="work-tech">
             <span>Python</span><span>pyperclip</span><span>JSON</span>
           </div>
-          <a class="work-link" href="https://github.com/hyuga-22/kaomozi_cli" target="_blank" rel="noopener">README・コードを見る</a>
+          <div class="work-links">
+            <a class="work-link" href="https://github.com/hyuga-22/kaomozi_cli" target="_blank" rel="noopener">README・コードを見る</a>
+          </div>
         </div>
 
         <div class="work">
@@ -453,7 +517,9 @@
           <div class="work-tech">
             <span>Python</span><span>MySQL</span><span>python-dotenv</span>
           </div>
-          <a class="work-link" href="https://github.com/hyuga-22/todo_cli" target="_blank" rel="noopener">README・コードを見る</a>
+          <div class="work-links">
+            <a class="work-link" href="https://github.com/hyuga-22/todo_cli" target="_blank" rel="noopener">README・コードを見る</a>
+          </div>
         </div>
 
         <div class="work">
@@ -472,7 +538,9 @@
           <div class="work-tech">
             <span>Node.js</span><span>Express</span><span>EJS</span><span>Open-Meteo API</span>
           </div>
-          <a class="work-link" href="https://github.com/hyuga-22/weather_web" target="_blank" rel="noopener">README・コードを見る</a>
+          <div class="work-links">
+            <a class="work-link" href="https://github.com/hyuga-22/weather_web" target="_blank" rel="noopener">README・コードを見る</a>
+          </div>
         </div>
 
       </div>
@@ -496,7 +564,7 @@
     </div>
   </section>
 
-  <footer>portfolio — 最終更新: 2026年8月</footer>
+  <footer>portfolio — 最終更新: 2026年10月</footer>
 
 </body>
 </html>
