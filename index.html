@@ -298,6 +298,43 @@
     line-height: 1.5;
     margin-top: 6px;
   }
+  .work-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0 0 12px 0;
+  }
+  .work-meta b { color: var(--ink); font-weight: 700; }
+  .work-more {
+    margin: 0 0 18px 0;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+  }
+  .work-more summary {
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .work-more summary::-webkit-details-marker { display: none; }
+  .work-more summary::before { content: "＋ "; }
+  .work-more[open] summary::before { content: "－ "; }
+  .work-more[open] summary { margin-bottom: 14px; }
+  .pill small {
+    display: block;
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .pill small a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  .pill small a:hover { border-color: var(--accent); }
+  .contact-lead { font-size: 15px; max-width: 40em; margin-bottom: 20px; }
   .work-links { display: flex; flex-wrap: wrap; gap: 10px; }
   .work-link {
     display: inline-flex;
@@ -363,6 +400,8 @@
     .work { padding: 22px 18px 18px; }
     .timeline { padding-left: 24px; }
     .work::before { left: -24px; }
+    .work-shots { grid-template-columns: repeat(2, 1fr); }
+    .work-shots img { height: 120px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -401,34 +440,34 @@
     <div class="wrap">
       <p class="eyebrow">skills</p>
       <h2>スキル紹介</h2>
-      <p style="margin-bottom: 28px;">以下は、これまで制作した4つの作品を通して実際に使用した技術です。各技術の詳しい使い方は「制作物」セクションで紹介しています。</p>
+      <p style="margin-bottom: 28px;">以下は、これまで制作した4つの作品を通して実際に使用した技術です。習熟度の自己評価ではなく、「どの作品で使ったか」で示しています。作品名をクリックすると、該当の制作物に移動します。</p>
 
 
       <div class="skill-group">
         <h3>言語 / フレームワーク</h3>
         <div class="pill-row">
-          <span class="pill">Python</span>
-          <span class="pill">Flask</span>
-          <span class="pill">JavaScript</span>
-          <span class="pill">Node.js / Express</span>
-          <span class="pill">EJS</span>
-          <span class="pill">HTML / CSS</span>
+          <span class="pill">Python<small>使用: <a href="#work-flaskozi">Flaskozi</a>・<a href="#work-kaomozi_cli">顔文字CLI</a>・<a href="#work-todo_cli">TODO管理</a></small></span>
+          <span class="pill">Flask<small>使用: <a href="#work-flaskozi">Flaskozi</a></small></span>
+          <span class="pill">JavaScript<small>使用: <a href="#work-flaskozi">Flaskozi</a>・<a href="#work-weather_web">天気検索</a></small></span>
+          <span class="pill">Node.js / Express<small>使用: <a href="#work-weather_web">天気検索</a></small></span>
+          <span class="pill">EJS<small>使用: <a href="#work-weather_web">天気検索</a></small></span>
+          <span class="pill">HTML / CSS<small>使用: <a href="#work-flaskozi">Flaskozi</a>・<a href="#work-weather_web">天気検索</a></small></span>
         </div>
       </div>
 
       <div class="skill-group">
         <h3>データベース</h3>
         <div class="pill-row">
-          <span class="pill">MySQL</span>
+          <span class="pill">MySQL<small>使用: <a href="#work-todo_cli">TODO管理</a></small></span>
         </div>
       </div>
 
       <div class="skill-group">
         <h3>その他</h3>
         <div class="pill-row">
-          <span class="pill">外部API連携（Open-Meteo）</span>
-          <span class="pill">Git / GitHub</span>
-          <span class="pill">環境変数によるセキュリティ管理</span>
+          <span class="pill">外部API連携（Open-Meteo）<small>使用: <a href="#work-weather_web">天気検索</a></small></span>
+          <span class="pill">Git / GitHub<small>使用: <a href="#work-flaskozi">Flaskozi</a>・<a href="#work-kaomozi_cli">顔文字CLI</a>・<a href="#work-todo_cli">TODO管理</a>・<a href="#work-weather_web">天気検索</a></small></span>
+          <span class="pill">環境変数によるセキュリティ管理<small>使用: <a href="#work-flaskozi">Flaskozi</a>・<a href="#work-todo_cli">TODO管理</a></small></span>
         </div>
       </div>
     </div>
@@ -454,10 +493,14 @@
 
       <div class="timeline">
 
-        <div class="work" data-work="flaskozi">
+        <div class="work" id="work-flaskozi" data-work="flaskozi">
           <p class="work-role">FRONTEND / WEB · FEATURED</p>
           <h3>Flaskozi ω・´ - 顔文字辞書（Web版）</h3>
           <p class="work-subtitle">Flask × kaomozi（顔文字）+ ω・´ ／ 現在最も力を入れて開発している代表作品</p>
+          <div class="work-meta"><span><b>区分</b> 個人開発</span><span><b>状態</b> ライブデモ公開中・継続開発中</span></div>
+          <div class="work-tech">
+            <span>Python</span><span>Flask</span><span>Flask-Limiter</span><span>Werkzeug</span>
+          </div>
           <p class="problem">PCで顔文字を入力する際、スマートフォンの「Simeji」のような辞書アプリが存在しない不便さを解消するために開発。CLI版をFlaskで作り直し、認証・セキュリティ対応を含めて一般公開できる形に仕上げ、ライブデモを公開しています（管理者機能は公開デモでは利用できません）。</p>
           <div class="work-shots">
             <figure>
@@ -483,77 +526,93 @@
             <li>管理者による顔文字の登録・編集・削除、データのバックアップ／復元</li>
             <li>Zip Slip対策、認可チェック、ブルートフォース対策などのセキュリティ対応（自動テストによる網羅的な検証は未実施）</li>
           </ul>
-          <p class="field-label">工夫した点</p>
-          <p>「動けばよい」実装から一歩進め、Zip Slip対策・認可チェックの一貫性・原子的なファイル書き込みなど、実運用を意識したセキュリティ課題を洗い出して対応しました。インターンシップの個別フィードバック面談でZoomの画面共有を通じて見ていただいた際には、機能面は作り込まれており、デザインさえ整えれば通常のWebサイトとして通用する完成度だとの評価をいただきました。</p>
-          <p class="field-label">今後の課題</p>
-          <p>CSRFトークンによる本格的な対策やSQLiteへの移行、デザイン・UI/UXの細部調整が未着手のため、今後の改善点として残しています。まだ学習段階の個人開発アプリであることを踏まえ、優先度をつけながら順次対応していく予定です。インターンシップの個別フィードバック面談において「挨拶・笑い・反応のようなジャンルで顔文字を検索できると良い」というご意見をいただいたため、ジャンル検索機能の実装を予定しています。また、入力中のテキストを検知して顔文字候補をポップアップ表示するChrome拡張機能を実装し、PC版simejiに近い体験を将来的に目指したいと考えています。</p>
-          <div class="work-tech">
-            <span>Python</span><span>Flask</span><span>Flask-Limiter</span><span>Werkzeug</span>
-          </div>
+          <details class="work-more">
+            <summary>工夫した点・今後の課題を読む</summary>
+            <p class="field-label">工夫した点</p>
+            <p>「動けばよい」実装から一歩進め、Zip Slip対策・認可チェックの一貫性・原子的なファイル書き込みなど、実運用を意識したセキュリティ課題を洗い出して対応しました。インターンシップの個別フィードバック面談でZoomの画面共有を通じて見ていただいた際には、機能面は作り込まれており、デザインさえ整えれば通常のWebサイトとして通用する完成度だとの評価をいただきました。</p>
+            <p class="field-label">今後の課題</p>
+            <p>CSRFトークンによる本格的な対策やSQLiteへの移行、デザイン・UI/UXの細部調整が未着手のため、今後の改善点として残しています。まだ学習段階の個人開発アプリであることを踏まえ、優先度をつけながら順次対応していく予定です。インターンシップの個別フィードバック面談において「挨拶・笑い・反応のようなジャンルで顔文字を検索できると良い」というご意見をいただいたため、ジャンル検索機能の実装を予定しています。また、入力中のテキストを検知して顔文字候補をポップアップ表示するChrome拡張機能を実装し、PC版simejiに近い体験を将来的に目指したいと考えています。</p>
+          </details>
+
           <div class="work-links">
             <a class="work-link" href="https://kaomozi-web.onrender.com/" target="_blank" rel="noopener">ライブデモを見る</a>
             <a class="work-link work-link-secondary" href="https://github.com/hyuga-22/kaomozi_web" target="_blank" rel="noopener">README・コードを見る</a>
           </div>
         </div>
 
-        <div class="work" data-work="kaomozi_cli">
+        <div class="work" id="work-kaomozi_cli" data-work="kaomozi_cli">
           <p class="work-role">CLI / LOCAL TOOL</p>
           <h3>顔文字辞書（CLI版）</h3>
+          <div class="work-meta"><span><b>区分</b> 個人開発（1年次の課題が発端）</span><span><b>形態</b> ローカル実行のCLIツール</span></div>
+          <div class="work-tech">
+            <span>Python</span><span>pyperclip</span><span>JSON</span>
+          </div>
           <p class="problem">Web版のもとになった、自分専用のローカルツール。専門学校1年次のPython課題をきっかけに開発し、ターミナル上で顔文字の検索・登録・編集・削除を行えます。</p>
           <p class="field-label">主な機能</p>
           <ul>
             <li>顔文字の検索（完全一致・部分一致）、クリップボードへのコピー</li>
             <li>顔文字・お気に入りの登録／編集／削除</li>
           </ul>
-          <p class="field-label">工夫した点</p>
-          <p>顔文字を編集・削除した際、お気に入り側のデータも自動的に連動して更新されるようにし、自分専用ツールとしての使い勝手を優先しました。データ保存をJSON化し、検索も完全一致・部分一致を切り替えられる方式にするなど、個人用ツールとして日常的に運用しやすい設計を意識しました。</p>
-          <p class="field-label">今後の課題</p>
-          <p>簡易チャットボット機能を試作中ですが、現時点では固定応答を返すだけの未実装機能です。エラーハンドリングや自動テストの整備も今後の課題です。</p>
-          <div class="work-tech">
-            <span>Python</span><span>pyperclip</span><span>JSON</span>
-          </div>
+          <details class="work-more">
+            <summary>工夫した点・今後の課題を読む</summary>
+            <p class="field-label">工夫した点</p>
+            <p>顔文字を編集・削除した際、お気に入り側のデータも自動的に連動して更新されるようにし、自分専用ツールとしての使い勝手を優先しました。データ保存をJSON化し、検索も完全一致・部分一致を切り替えられる方式にするなど、個人用ツールとして日常的に運用しやすい設計を意識しました。</p>
+            <p class="field-label">今後の課題</p>
+            <p>簡易チャットボット機能を試作中ですが、現時点では固定応答を返すだけの未実装機能です。エラーハンドリングや自動テストの整備も今後の課題です。</p>
+          </details>
+
           <div class="work-links">
             <a class="work-link" href="https://github.com/hyuga-22/kaomozi_cli" target="_blank" rel="noopener">README・コードを見る</a>
           </div>
         </div>
 
-        <div class="work" data-work="todo_cli">
+        <div class="work" id="work-todo_cli" data-work="todo_cli">
           <p class="work-role">BACKEND / DATABASE</p>
           <h3>TODO管理CLI</h3>
+          <div class="work-meta"><span><b>区分</b> 授業課題（1年次）を見直し</span><span><b>形態</b> MySQLを使うCLIアプリ</span></div>
+          <div class="work-tech">
+            <span>Python</span><span>MySQL</span><span>python-dotenv</span>
+          </div>
           <p class="problem">専門学校1年次の「データベース設計」の授業課題を、ポートフォリオ用に見直したもの。ユーザーごとにTODOを優先度・期限つきで管理できるCUIアプリです。</p>
           <p class="field-label">主な機能</p>
           <ul>
             <li>ユーザー管理（登録・表示・更新・削除）、TODO管理（登録・表示・更新・削除・出力）</li>
             <li>優先度順／期限順での並び替え、上位5件表示／全件表示の切り替え</li>
           </ul>
-          <p class="field-label">工夫した点</p>
-          <p>SQLをすべてパラメータ化してSQLインジェクションを防ぎ、更新・削除処理ではcommit／rollbackによるトランザクション管理を行っています。ポートフォリオ用の見直しでは、メニューが操作のたびに終了してしまう不便さを解消するためwhileループ化し、TODO表示も上位5件と全件表示を選べるように拡張しました。</p>
-          <p class="field-label">今後の課題</p>
-          <p>エラーハンドリングの強化や利便性の向上、データベース設計の最適化、機能の追加・修正が挙げられます。将来的には、Flaskozi ω・´と同じようにWEB化し、共有しやすい形にすることも考えています。</p>
-          <div class="work-tech">
-            <span>Python</span><span>MySQL</span><span>python-dotenv</span>
-          </div>
+          <details class="work-more">
+            <summary>工夫した点・今後の課題を読む</summary>
+            <p class="field-label">工夫した点</p>
+            <p>SQLをすべてパラメータ化してSQLインジェクションを防ぎ、更新・削除処理ではcommit／rollbackによるトランザクション管理を行っています。ポートフォリオ用の見直しでは、メニューが操作のたびに終了してしまう不便さを解消するためwhileループ化し、TODO表示も上位5件と全件表示を選べるように拡張しました。</p>
+            <p class="field-label">今後の課題</p>
+            <p>エラーハンドリングの強化や利便性の向上、データベース設計の最適化、機能の追加・修正が挙げられます。将来的には、Flaskozi ω・´と同じようにWEB化し、共有しやすい形にすることも考えています。</p>
+          </details>
+
           <div class="work-links">
             <a class="work-link" href="https://github.com/hyuga-22/todo_cli" target="_blank" rel="noopener">README・コードを見る</a>
           </div>
         </div>
 
-        <div class="work" data-work="weather_web">
+        <div class="work" id="work-weather_web" data-work="weather_web">
           <p class="work-role">API連携</p>
           <h3>天気検索アプリ</h3>
+          <div class="work-meta"><span><b>区分</b> 個人開発</span><span><b>形態</b> Webアプリ（外部API利用）</span></div>
+          <div class="work-tech">
+            <span>Node.js</span><span>Express</span><span>EJS</span><span>Open-Meteo API</span>
+          </div>
           <p class="problem">気象庁のサイトやテレビをわざわざ確認するのが面倒な時に、地域名を入力するだけで手軽に天気予報や気温を確認できるツールとして開発しました。</p>
           <p class="field-label">主な機能</p>
           <ul>
             <li>地域名から緯度経度への自動変換（表記ゆれにも対応）</li>
             <li>過去の天気の期間検索、今日から先の天気予報（1〜16日）の表示</li>
           </ul>
-          <p class="field-label">工夫した点</p>
-          <p>当初はPythonで取得したデータをDBに保存し一覧表示するだけの構成でしたが、「WEB上で完結させたい」「検索するたびに履歴が溜まるのは良くない」という気づきから、DBを持たないその場検索の構成に作り直しました。「越谷市」「越谷」のような地域名の表記ゆれにも、複数パターンを自動で試すことで対応しています。</p>
-          <p class="field-label">今後の課題</p>
-          <p>複数地点を同時に比較表示する機能や、気温の推移をグラフで可視化する機能は、今後の改善案として残しています。</p>
-          <div class="work-tech">
-            <span>Node.js</span><span>Express</span><span>EJS</span><span>Open-Meteo API</span>
-          </div>
+          <details class="work-more">
+            <summary>工夫した点・今後の課題を読む</summary>
+            <p class="field-label">工夫した点</p>
+            <p>当初はPythonで取得したデータをDBに保存し一覧表示するだけの構成でしたが、「WEB上で完結させたい」「検索するたびに履歴が溜まるのは良くない」という気づきから、DBを持たないその場検索の構成に作り直しました。「越谷市」「越谷」のような地域名の表記ゆれにも、複数パターンを自動で試すことで対応しています。</p>
+            <p class="field-label">今後の課題</p>
+            <p>複数地点を同時に比較表示する機能や、気温の推移をグラフで可視化する機能は、今後の改善案として残しています。</p>
+          </details>
+
           <div class="work-links">
             <a class="work-link" href="https://github.com/hyuga-22/weather_web" target="_blank" rel="noopener">README・コードを見る</a>
           </div>
@@ -567,6 +626,7 @@
     <div class="wrap">
       <p class="eyebrow">contact</p>
       <h2>連絡先</h2>
+      <p class="contact-lead">インターンシップ・採用に関するご連絡や、作品へのご感想・ご意見は、下記までお気軽にご連絡ください。</p>
       <ul class="contact-list">
         <li>
           <span class="contact-label">Mail</span>
@@ -580,7 +640,7 @@
     </div>
   </section>
 
-  <footer>portfolio — 最終更新: 2026年10月</footer>
+  <footer>portfolio — 最終更新: 2026年11月</footer>
 
 
   <script>
@@ -612,6 +672,16 @@
       document.querySelectorAll('.work[data-work]').forEach(function (card) {
         var w = card.getAttribute('data-work');
         watch(card, 'view_work_' + w, { work_name: w }, 0.15);
+      });
+
+      // 詳細（工夫した点・今後の課題）を開いた回数
+      document.querySelectorAll('.work[data-work] details.work-more').forEach(function (d) {
+        d.addEventListener('toggle', function () {
+          if (d.open) {
+            var w = d.closest('.work').getAttribute('data-work');
+            track('open_detail_' + w, { work_name: w });
+          }
+        });
       });
 
       // 2) 動いた: リンクのクリックを種類と作品名つきで送信
