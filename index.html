@@ -17,10 +17,26 @@
   <title>會田彪冴｜Webアプリ開発ポートフォリオ</title>
 
   <meta name="description"
-        content="PythonやFlaskを用いたWebアプリ開発の制作物を掲載しています。代表作品であるFlaskozi ω・´を中心に開発・改善の取り組みを紹介しています。">
+        content="PythonやFlaskを用いたWebアプリ開発の制作物を掲載しています。代表作Flaskozi ω・´を中心に開発・改善の取り組みを紹介しています。">
 
   <link rel="canonical"
         href="https://hyuga-22.github.io/">
+
+  <!-- OGP（SNS・チャットでURLを共有したときの表示） -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="會田彪冴のポートフォリオ">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="會田彪冴｜Webアプリ開発ポートフォリオ">
+  <meta property="og:description" content="PythonやFlaskを用いたWebアプリ開発の制作物を掲載しています。代表作Flaskozi ω・´を中心に開発・改善の取り組みを紹介しています。">
+  <meta property="og:url" content="https://hyuga-22.github.io/">
+  <meta property="og:image" content="https://hyuga-22.github.io/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="會田彪冴のポートフォリオ。代表作Flaskozi ω・´の画面を掲載">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="會田彪冴｜Webアプリ開発ポートフォリオ">
+  <meta name="twitter:description" content="PythonやFlaskを用いたWebアプリ開発の制作物を掲載しています。代表作Flaskozi ω・´を中心に開発・改善の取り組みを紹介しています。">
+  <meta name="twitter:image" content="https://hyuga-22.github.io/images/og-image.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -438,7 +454,7 @@
 
       <div class="timeline">
 
-        <div class="work">
+        <div class="work" data-work="flaskozi">
           <p class="work-role">FRONTEND / WEB · FEATURED</p>
           <h3>Flaskozi ω・´ - 顔文字辞書（Web版）</h3>
           <p class="work-subtitle">Flask × kaomozi（顔文字）+ ω・´ ／ 現在最も力を入れて開発している代表作品</p>
@@ -446,19 +462,19 @@
           <div class="work-shots">
             <figure>
               <a href="images/flaskozi-list.webp" target="_blank" rel="noopener"><img src="images/flaskozi-list.webp" width="884" height="802" loading="lazy" alt="Flaskoziの顔文字一覧・検索画面。検索欄に入力すると結果が別枠でライブ表示される"></a>
-              <figcaption>顔文字一覧・ライブ検索<br>（デモで利用可）</figcaption>
+              <figcaption>一覧・ライブ検索<br>（デモで利用可）</figcaption>
             </figure>
             <figure>
               <a href="images/flaskozi-mobile.webp" target="_blank" rel="noopener"><img src="images/flaskozi-mobile.webp" width="480" height="856" loading="lazy" alt="スマートフォンで表示したFlaskoziのメインメニュー"></a>
-              <figcaption>メニュー(スマホ表示)<br>（デモで利用可）</figcaption>
+              <figcaption>スマホ表示<br>（デモで利用可）</figcaption>
             </figure>
             <figure>
               <a href="images/flaskozi-admin-menu.webp" target="_blank" rel="noopener"><img src="images/flaskozi-admin-menu.webp" width="855" height="588" loading="lazy" alt="Flaskoziの管理者メニュー。登録・編集・削除・リクエスト確認・バックアップ・復元・ログアウト"></a>
-              <figcaption>管理者メニュー(メニュー下部)<br>（デモでは利用不可）</figcaption>
+              <figcaption>管理者メニュー<br>（デモでは利用不可）</figcaption>
             </figure>
             <figure>
               <a href="images/flaskozi-admin-restore.webp" target="_blank" rel="noopener"><img src="images/flaskozi-admin-restore.webp" width="862" height="600" loading="lazy" alt="Flaskoziのデータ復元画面。ZIP選択、復元項目の選択、パスコード入力"></a>
-              <figcaption>管理者バックアップ復元<br>（デモで一部利用化）</figcaption>
+              <figcaption>バックアップ復元<br>（デモでは利用不可）</figcaption>
             </figure>
           </div>
           <p class="field-label">主な機能</p>
@@ -480,7 +496,7 @@
           </div>
         </div>
 
-        <div class="work">
+        <div class="work" data-work="kaomozi_cli">
           <p class="work-role">CLI / LOCAL TOOL</p>
           <h3>顔文字辞書（CLI版）</h3>
           <p class="problem">Web版のもとになった、自分専用のローカルツール。専門学校1年次のPython課題をきっかけに開発し、ターミナル上で顔文字の検索・登録・編集・削除を行えます。</p>
@@ -501,7 +517,7 @@
           </div>
         </div>
 
-        <div class="work">
+        <div class="work" data-work="todo_cli">
           <p class="work-role">BACKEND / DATABASE</p>
           <h3>TODO管理CLI</h3>
           <p class="problem">専門学校1年次の「データベース設計」の授業課題を、ポートフォリオ用に見直したもの。ユーザーごとにTODOを優先度・期限つきで管理できるCUIアプリです。</p>
@@ -522,7 +538,7 @@
           </div>
         </div>
 
-        <div class="work">
+        <div class="work" data-work="weather_web">
           <p class="work-role">API連携</p>
           <h3>天気検索アプリ</h3>
           <p class="problem">気象庁のサイトやテレビをわざわざ確認するのが面倒な時に、地域名を入力するだけで手軽に天気予報や気温を確認できるツールとして開発しました。</p>
@@ -565,6 +581,57 @@
   </section>
 
   <footer>portfolio — 最終更新: 2026年10月</footer>
+
+
+  <script>
+    // アクセス計測用イベント（GA4）。KPI「見られた」「動いた」の数値を取るためのもの。
+    // gtag が読み込めない環境（広告ブロック等）でもページの動作には影響しない。
+    (function () {
+      function track(name, params) {
+        try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch (e) {}
+      }
+
+      // 1) 見られた: セクションは2%、作品カードは1.5割以上が画面に入ったら1回だけ送信
+      var seen = {};
+      function watch(el, eventName, params, threshold) {
+        if (!('IntersectionObserver' in window)) return;
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting && !seen[eventName]) {
+              seen[eventName] = true;
+              track(eventName, params);
+              io.disconnect();
+            }
+          });
+        }, { threshold: threshold });
+        io.observe(el);
+      }
+      document.querySelectorAll('section[id]').forEach(function (sec) {
+        watch(sec, 'view_' + sec.id, { section_name: sec.id }, 0.02);
+      });
+      document.querySelectorAll('.work[data-work]').forEach(function (card) {
+        var w = card.getAttribute('data-work');
+        watch(card, 'view_work_' + w, { work_name: w }, 0.15);
+      });
+
+      // 2) 動いた: リンクのクリックを種類と作品名つきで送信
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href]');
+        if (!a) return;
+        var href = a.getAttribute('href');
+        var card = a.closest('.work[data-work]');
+        var w = card ? card.getAttribute('data-work') : null;
+        var name = null;
+        if (href.indexOf('mailto:') === 0) name = 'click_mail';
+        else if (href.indexOf('kaomozi-web.onrender.com') !== -1)
+          name = a.closest('.hero') ? 'click_hero_demo' : 'click_demo_' + (w || 'flaskozi');
+        else if (/github\.com\/hyuga-22\/?$/.test(href)) name = 'click_github_profile';
+        else if (href.indexOf('github.com/hyuga-22/') !== -1) name = 'click_github_' + (w || 'repo');
+        else if (href.indexOf('images/') === 0) name = 'click_screenshot_' + (w || 'unknown');
+        if (name) track(name, { link_url: href, work_name: w || '' });
+      });
+    })();
+  </script>
 
 </body>
 </html>
